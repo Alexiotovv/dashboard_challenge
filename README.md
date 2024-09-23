@@ -12,9 +12,14 @@ Paso 2.
     python populate_personas.py 
     
     esto poblará la base de datos.
-
+Paso3.
 - Para correr el servidor local, ejecuta el siguiente comando:
     python manage.py runserver
+
+- Abre el navegador y escribe en la barra de url, lo siguiente:
+    localhost:8000/mysql
+
+    Esto mostrará 2 gráficos y una tabla.
 
 
 
