@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <title>Dashboard</title>
+</head>
+<div>
+    <!-- Menú -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Inicio</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Bienvenido al Dashboard Principal</a>
+              </li>
+             
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+
+    <div class="row" style="place-content: center;">
+        <h2>Relación entre Edad y Salario</h2>
+    </div>
+    <div class="row" style="place-content: center;">
+      <img src="{{ grafico_barras }}" alt="Gráfico de barras">
+    </div>
+
+    <div class="row" style="place-content: center;">
+      <h2>Distribución de Personas por Ciudad</h2>
+    </div>
+    
+    <div class="row" style="place-content: center;">
+      <img src="{{ grafico_circular }}" alt="Gráfico Circular">
+    </div>
+
+    <div class="row" style="place-content: center;">
+      <div class="container">
+        <h5>Datos Obtenidos</h5>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Ciudad</th>
+              <th>Salario</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for dt in datos_tabla %}
+              <tr>
+                <td>{{dt.nombre}}</td>
+                <td>{{dt.edad}}</td>
+                <td>{{dt.ciudad}}</td>
+                <td>{{dt.salario}}</td>
+              </tr>    
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+</body>
+
+</html>

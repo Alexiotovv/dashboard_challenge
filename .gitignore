@@ -1,0 +1,4 @@
+/appDashboard/settings.py
+**/__pycache__/
+*.py.swo
+/appDashboard/*.*
