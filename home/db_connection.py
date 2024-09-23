@@ -4,6 +4,7 @@ from django.conf import settings
 
 def get_db_connection():
     try:
+        #obtenemos la conexion del archivo settings.py
         connection = mysql.connector.connect(
             host=settings.DATABASES['default']['HOST'],
             user=settings.DATABASES['default']['USER'],

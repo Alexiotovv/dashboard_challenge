@@ -18,14 +18,14 @@ Crea el entorno virtual, con el siguiente comando:
 crea una carpeta para tu proyecto entra y ejecuta el comando:
 
 - En Windows:
-    python -m venv appDashboard_env
-    cd appDashboard_env
-    .\Scripts\activate
+    - python -m venv appDashboard_env
+    - cd appDashboard_env
+    - .\Scripts\activate
 
 - En Linux:
-    virtualenv appDashboard_env
-    cd appDashboard_env
-    source bin/activate
+    - virtualenv appDashboard_env
+    - cd appDashboard_env
+    - source bin/activate
 
 
 Paso 1.
@@ -35,21 +35,21 @@ Paso 1.
 Paso 2.
 - Crear tu base de datos en mysql. llamada: dbdashboard
 - Ubícate en la misma ruta de manage.py, y ejecuta los siguientes comandos uno por uno:
-    python manage.py migrate
-    python manage.py makemigrations
-    python populate_personas.py 
+    - python manage.py migrate
+    - python manage.py makemigrations
+    - python populate_personas.py 
     
-    esto poblará la base de datos.
+    - esto poblará la base de datos.
 Paso3.
 - Ejecuta el archivo requirements.txt, con el siguiente comando:
     pip install -r requirements.txt
 
 Paso4.
 - Para correr el servidor local, ejecuta el siguiente comando:
-    python manage.py runserver
+    - python manage.py runserver
 
 - Abre el navegador y escribe en la barra de url, lo siguiente:
-    localhost:8000/mysql
+    - localhost:8000/mysql
 
     Esto mostrará 2 gráficos y una tabla.
 

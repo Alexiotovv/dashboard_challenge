@@ -1,9 +1,8 @@
 import os
-import io
 import matplotlib.pyplot as plt
 from django.conf import settings
 from django.shortcuts import render
-from .models import Persona  # Asegúrate de importar tu modelo si lo estás usando
+from .models import Persona  #Importamos el modelo
 from django.db.models import Count
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
@@ -13,37 +12,33 @@ from home.db_connection import get_db_connection  # Importa la función de conex
 #Vista con Mysql connector
 
 def dashboard_mysqlconnector(request):
-
     connection = get_db_connection()
-
     cursor = connection.cursor(dictionary=True)
-
-
-
     # Obtener datos para el DataTable
-    cursor.execute("SELECT * FROM home_persona")  # Asegúrate de que el nombre de la tabla sea correcto
+    cursor.execute("SELECT * FROM home_persona")  # 
     datos_tabla = cursor.fetchall()
 
     #### GRÁFICO BARRAS
-    # Obtener los datos para el gráfico de barras
+    # Obtenemos los datos para el gráfico de barras
     cursor.execute("SELECT edad, salario FROM home_persona")
     datos = cursor.fetchall()
     
-    # Separar los datos en listas de edades y salarios
-    edades = [dato['edad'] for dato in datos]
+    # Separamos los datos en listas de edades y salarios
+    edades = [dato['edad'] for dato in datos] # usamos un compremhension list
     salarios = [float(dato['salario']) for dato in datos]
 
-    # Crear el gráfico de barras
+    # Creamos el gráfico de barras
     fig, ax = plt.subplots()
     ax.bar(edades, salarios, color='blue')
 
-    # Etiquetas y título
+    # Ponemos Etiquetas y título
     ax.set_xlabel('Edad')
     ax.set_ylabel('Salario')
     ax.set_title('Relación entre Edad y Salario')
     
     # Ruta para guardar el gráfico (puedes usar MEDIA_ROOT o STATIC_ROOT)
     grafico_path = os.path.join(settings.MEDIA_ROOT, 'grafico_barras.png')
+    
     # Guardar el gráfico en formato PNG
     fig.savefig(grafico_path)
     # Pasar la URL del gráfico generado a la plantilla
@@ -70,11 +65,11 @@ def dashboard_mysqlconnector(request):
 
     grafico_circular = os.path.join(settings.MEDIA_URL, 'grafico_circular.png')
 
-    # Cerrar el cursor y la conexión
+    # Cerramos el cursor y la conexión
     cursor.close()
     connection.close()
 
-    # Enviar todo
+    # Enviamos todo(los 2 graficos y los datos para la tabla)
     return render(request, 'base/dashboard.html', {
         'grafico_barras': grafico_barras,
         'grafico_circular': grafico_circular,
