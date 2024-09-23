@@ -10,7 +10,6 @@ from home.db_connection import get_db_connection  # Importa la función de conex
 
 
 #Vista con Mysql connector
-
 def dashboard_mysqlconnector(request):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
@@ -76,7 +75,7 @@ def dashboard_mysqlconnector(request):
         'datos_tabla': datos_tabla
     })
 
-# Vista para generar el gráfico y guardarlo como archivo
+# Vista usando el  Modelo 
 def dashboard(request):
     #Datos para el DataTable
     datos_tabla = Persona.objects.all()
